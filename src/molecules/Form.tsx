@@ -4,32 +4,27 @@ import cn from "classnames";
 import CurrencyButton from "../atoms/CurrencyButton";
 import SubmitButton from "../atoms/SubmitButton";
 
-interface Input {
-  currency: "euro" | "dollar";
-  value: string;
-}
+import { useData, FormDataProps } from "../contexts/FormContext";
 
 const Form = () => {
+  const { data, setData } = useData();
+
   const {
     watch,
     register,
     setValue,
     handleSubmit,
     formState: { errors },
-  } = useForm<Input>({
+  } = useForm<FormDataProps>({
     defaultValues: {
-      currency: "dollar",
+      currency: data.currency,
     },
   });
 
-  const onSubmit: SubmitHandler<Input> = (data) => {
+  const onSubmit: SubmitHandler<FormDataProps> = (data) => {
     if (Number.isNaN(data.value) || data.value === undefined) return;
 
-    if (errors.currency || errors.value) {
-      console.log(errors.root);
-    } else {
-      console.log(data);
-    }
+    setData(data);
   };
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -38,7 +33,7 @@ const Form = () => {
     setValue("value", result);
   };
 
-  const currencyOnClick = (currency: Input["currency"]) => {
+  const currencyOnClick = (currency: FormDataProps["currency"]) => {
     setValue("currency", currency);
     onSubmit({ currency, value: watch("value") });
   };
@@ -50,18 +45,18 @@ const Form = () => {
           className="rounded-l-xl w-1/7"
           currency="dollar"
           onClick={() => {
-            currencyOnClick("dollar");
+            currencyOnClick("usd");
           }}
-          selected={watch("currency") === "dollar"}
+          selected={watch("currency") === "usd"}
         />
 
         <CurrencyButton
           className="rounded-r-xl w-1/7 mr-3"
           currency="euro"
           onClick={() => {
-            currencyOnClick("euro");
+            currencyOnClick("eur");
           }}
-          selected={watch("currency") === "euro"}
+          selected={watch("currency") === "eur"}
         />
 
         <input
