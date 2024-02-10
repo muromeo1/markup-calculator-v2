@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 
 import { useData } from "../contexts/FormContext";
 import useCurrency from "../hooks/useCurrency";

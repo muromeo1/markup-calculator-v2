@@ -1,7 +1,7 @@
 import Typography from "../atoms/Typography";
 
 const Header = () => (
-  <div className="flex flex-col items-center pt-[100px] gap-3">
+  <div className="flex flex-col items-center gap-3">
     <div className="w-full">
       <Typography.Title text="Markup calculator" />
     </div>

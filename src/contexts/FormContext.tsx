@@ -11,7 +11,6 @@ import {
 export interface FormDataProps {
   currency: "eur" | "usd";
   value: string;
-  totalNet?: string;
 }
 
 interface DataContextProps {

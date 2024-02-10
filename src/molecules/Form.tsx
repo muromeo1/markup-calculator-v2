@@ -9,13 +9,7 @@ import { useData, FormDataProps } from "../contexts/FormContext";
 const Form = () => {
   const { data, setData } = useData();
 
-  const {
-    watch,
-    register,
-    setValue,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormDataProps>({
+  const { watch, register, setValue, handleSubmit } = useForm<FormDataProps>({
     defaultValues: {
       currency: data.currency,
     },
@@ -75,7 +69,7 @@ const Form = () => {
           onChange={handleChange}
         />
 
-        <SubmitButton onSubmit={onSubmit} />
+        <SubmitButton onSubmit={() => onSubmit} />
       </div>
     </form>
   );

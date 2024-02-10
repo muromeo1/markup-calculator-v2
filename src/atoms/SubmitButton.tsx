@@ -3,7 +3,7 @@ import cn from "classnames";
 import { IoIosSend } from "react-icons/io";
 
 interface SubmitButtonProps {
-  onSubmit: (data: any) => void;
+  onSubmit: () => void;
 }
 
 const SubmitButton: FC<SubmitButtonProps> = ({ onSubmit }) => {
